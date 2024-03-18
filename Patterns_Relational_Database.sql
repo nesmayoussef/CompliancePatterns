@@ -63,3 +63,21 @@ AND e3.act is NULL
 SELECT DISTINCT e1.cid
 FROM log e1
 WHERE e1.act in('A','B')
+
+#Last
+SELECT DISTINCT e1.cid
+FROM log e1
+WHERE e1.act = 'D'
+and not exists (select 1 from log as e2 where e2.cid = e1.cid and e2.position > e1.position)
+
+#Absence
+SELECT DISTINCT e1.cid
+FROM log e1
+WHERE not exists (select 1 from log e2 
+where e2.cid = e1.cid and e2.act in ('A','B'))
+
+#Existence
+SELECT DISTINCT e1.cid
+FROM log e1
+WHERE exists (select 1 from log e2 
+where e2.cid = e1.cid and e2.act in ('C'))
