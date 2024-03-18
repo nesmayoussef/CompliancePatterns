@@ -19,8 +19,8 @@ from My_log_2015_2 MATCH_RECOGNIZE(
      AFTER MATCH SKIP TO NEXT ROW
      PATTERN (A S* E )
      DEFINE
-              A AS Activity_ID = 'OLO messaging active',
-              S AS S.Activity_ID <> 'OLO messaging active' AND S.Activity_ID <> 'send confirmation receipt',
+              A AS Activity_ID = 'A',
+              S AS S.Activity_ID <> 'A' AND S.Activity_ID <> 'B',
               E AS E.Activity_ID = 'END'
      );
 --Q11     
