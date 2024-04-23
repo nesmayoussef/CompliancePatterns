@@ -42,11 +42,10 @@ where count < $nTime return distinct casename
 #Alternate Precedence
 Match (c:Case)-[r1:Case_To_Event]->(a:Event)
 where (a.name='A' or a.name= 'B') 
-with c.name as casename,[a.name,r1.position] as data order by data[1]
-with casename,collect(data) as activ 
+with c.name as casename,[a.name,r1.position] as data order by data[1] with casename,collect(data) as activ 
 unwind range(0,size(activ)-1) as i 
 with casename,activ[i] as acta, activ[i+1] as actb ,activ[i+2] as actb1 
-where (acta[0] <> actb[0] and actb[0] <> actb1[0] and actb[0] ='B') 
+where (acta[0] <> actb[0] and acta[1]< actb[1] and acta[0]='A' and actb[0]='B' and actb[0]=actb1[0] )
 return distinct casename
 
 #Alternate Response
