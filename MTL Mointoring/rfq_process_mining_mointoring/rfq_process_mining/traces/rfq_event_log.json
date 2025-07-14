@@ -1,0 +1,833 @@
+{
+  "metadata": {
+    "total_traces": 14,
+    "compliant_traces": 6,
+    "violating_traces": 8,
+    "generation_timestamp": "2025-06-11T03:24:28.605548"
+  },
+  "traces": [
+    {
+      "case_id": "RFQ_001",
+      "scenario_type": "perfect_compliance",
+      "compliance_status": "compliant",
+      "events": [
+        {
+          "case_id": "RFQ_001",
+          "activity": "rfq_sent",
+          "timestamp": 1642375105,
+          "attributes": {
+            "company_id": "COMP_A",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_001",
+          "activity": "quotation_prepared",
+          "timestamp": 1642631790,
+          "attributes": {
+            "quote_id": "Q_RFQ_001",
+            "amount": 44646
+          }
+        },
+        {
+          "case_id": "RFQ_001",
+          "activity": "quotation_sent",
+          "timestamp": 1642712490,
+          "attributes": {
+            "quote_date": 1642712490,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_001",
+          "activity": "offer_preserved",
+          "timestamp": 1643098323,
+          "attributes": {
+            "expiry_date": 1643317290,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_001",
+          "activity": "po_sent",
+          "timestamp": 1643523591,
+          "attributes": {
+            "po_id": "PO_RFQ_001",
+            "quote_ref": "Q_RFQ_001",
+            "days_after_quote": 9
+          }
+        },
+        {
+          "case_id": "RFQ_001",
+          "activity": "po_accepted",
+          "timestamp": 1643559585,
+          "attributes": {
+            "acceptance_date": 1643559585,
+            "reason": "PO received within deadline"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_002",
+      "scenario_type": "perfect_compliance",
+      "compliance_status": "compliant",
+      "events": [
+        {
+          "case_id": "RFQ_002",
+          "activity": "rfq_sent",
+          "timestamp": 1641780912,
+          "attributes": {
+            "company_id": "COMP_C",
+            "supplier_id": "SUPP_Z"
+          }
+        },
+        {
+          "case_id": "RFQ_002",
+          "activity": "quotation_prepared",
+          "timestamp": 1641984635,
+          "attributes": {
+            "quote_id": "Q_RFQ_002",
+            "amount": 37265
+          }
+        },
+        {
+          "case_id": "RFQ_002",
+          "activity": "quotation_sent",
+          "timestamp": 1642027400,
+          "attributes": {
+            "quote_date": 1642027400,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_002",
+          "activity": "offer_preserved",
+          "timestamp": 1642108699,
+          "attributes": {
+            "expiry_date": 1642632200,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_002",
+          "activity": "po_sent",
+          "timestamp": 1643684500,
+          "attributes": {
+            "po_id": "PO_RFQ_002",
+            "quote_ref": "Q_RFQ_002",
+            "days_after_quote": 19
+          }
+        },
+        {
+          "case_id": "RFQ_002",
+          "activity": "po_accepted",
+          "timestamp": 1643689174,
+          "attributes": {
+            "acceptance_date": 1643689174,
+            "reason": "PO received within deadline"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_003",
+      "scenario_type": "perfect_compliance",
+      "compliance_status": "compliant",
+      "events": [
+        {
+          "case_id": "RFQ_003",
+          "activity": "rfq_sent",
+          "timestamp": 1642604121,
+          "attributes": {
+            "company_id": "COMP_B",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_003",
+          "activity": "quotation_prepared",
+          "timestamp": 1642844035,
+          "attributes": {
+            "quote_id": "Q_RFQ_003",
+            "amount": 70748
+          }
+        },
+        {
+          "case_id": "RFQ_003",
+          "activity": "quotation_sent",
+          "timestamp": 1642909467,
+          "attributes": {
+            "quote_date": 1642909467,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_003",
+          "activity": "offer_preserved",
+          "timestamp": 1643012808,
+          "attributes": {
+            "expiry_date": 1643514267,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_003",
+          "activity": "po_sent",
+          "timestamp": 1644501420,
+          "attributes": {
+            "po_id": "PO_RFQ_003",
+            "quote_ref": "Q_RFQ_003",
+            "days_after_quote": 18
+          }
+        },
+        {
+          "case_id": "RFQ_003",
+          "activity": "po_accepted",
+          "timestamp": 1644525854,
+          "attributes": {
+            "acceptance_date": 1644525854,
+            "reason": "PO received within deadline"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_004",
+      "scenario_type": "late_po_denied",
+      "compliance_status": "compliant",
+      "events": [
+        {
+          "case_id": "RFQ_004",
+          "activity": "rfq_sent",
+          "timestamp": 1641977624,
+          "attributes": {
+            "company_id": "COMP_C",
+            "supplier_id": "SUPP_Z"
+          }
+        },
+        {
+          "case_id": "RFQ_004",
+          "activity": "quotation_prepared",
+          "timestamp": 1642108189,
+          "attributes": {
+            "quote_id": "Q_RFQ_004",
+            "amount": 20122
+          }
+        },
+        {
+          "case_id": "RFQ_004",
+          "activity": "quotation_sent",
+          "timestamp": 1642113866,
+          "attributes": {
+            "quote_date": 1642113866,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_004",
+          "activity": "offer_preserved",
+          "timestamp": 1642472524,
+          "attributes": {
+            "expiry_date": 1642718666,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_004",
+          "activity": "po_sent",
+          "timestamp": 1644149287,
+          "attributes": {
+            "po_id": "PO_RFQ_004",
+            "quote_ref": "Q_RFQ_004",
+            "days_after_quote": 23
+          }
+        },
+        {
+          "case_id": "RFQ_004",
+          "activity": "po_denied",
+          "timestamp": 1644163573,
+          "attributes": {
+            "denial_date": 1644163573,
+            "reason": "PO received after 3-week deadline"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_005",
+      "scenario_type": "late_po_denied",
+      "compliance_status": "compliant",
+      "events": [
+        {
+          "case_id": "RFQ_005",
+          "activity": "rfq_sent",
+          "timestamp": 1641487355,
+          "attributes": {
+            "company_id": "COMP_B",
+            "supplier_id": "SUPP_X"
+          }
+        },
+        {
+          "case_id": "RFQ_005",
+          "activity": "quotation_prepared",
+          "timestamp": 1641716713,
+          "attributes": {
+            "quote_id": "Q_RFQ_005",
+            "amount": 24787
+          }
+        },
+        {
+          "case_id": "RFQ_005",
+          "activity": "quotation_sent",
+          "timestamp": 1641736307,
+          "attributes": {
+            "quote_date": 1641736307,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_005",
+          "activity": "offer_preserved",
+          "timestamp": 1641996477,
+          "attributes": {
+            "expiry_date": 1642341107,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_005",
+          "activity": "po_sent",
+          "timestamp": 1643864368,
+          "attributes": {
+            "po_id": "PO_RFQ_005",
+            "quote_ref": "Q_RFQ_005",
+            "days_after_quote": 24
+          }
+        },
+        {
+          "case_id": "RFQ_005",
+          "activity": "po_denied",
+          "timestamp": 1643873317,
+          "attributes": {
+            "denial_date": 1643873317,
+            "reason": "PO received after 3-week deadline"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_006",
+      "scenario_type": "late_po_denied",
+      "compliance_status": "compliant",
+      "events": [
+        {
+          "case_id": "RFQ_006",
+          "activity": "rfq_sent",
+          "timestamp": 1641466223,
+          "attributes": {
+            "company_id": "COMP_B",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_006",
+          "activity": "quotation_prepared",
+          "timestamp": 1641700207,
+          "attributes": {
+            "quote_id": "Q_RFQ_006",
+            "amount": 58695
+          }
+        },
+        {
+          "case_id": "RFQ_006",
+          "activity": "quotation_sent",
+          "timestamp": 1641739010,
+          "attributes": {
+            "quote_date": 1641739010,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_006",
+          "activity": "offer_preserved",
+          "timestamp": 1642089750,
+          "attributes": {
+            "expiry_date": 1642343810,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_006",
+          "activity": "po_sent",
+          "timestamp": 1643977807,
+          "attributes": {
+            "po_id": "PO_RFQ_006",
+            "quote_ref": "Q_RFQ_006",
+            "days_after_quote": 25
+          }
+        },
+        {
+          "case_id": "RFQ_006",
+          "activity": "po_denied",
+          "timestamp": 1644006138,
+          "attributes": {
+            "denial_date": 1644006138,
+            "reason": "PO received after 3-week deadline"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_009",
+      "scenario_type": "missing_offer_preservation",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_009",
+          "activity": "rfq_sent",
+          "timestamp": 1643421306,
+          "attributes": {
+            "company_id": "COMP_C",
+            "supplier_id": "SUPP_X"
+          }
+        },
+        {
+          "case_id": "RFQ_009",
+          "activity": "quotation_prepared",
+          "timestamp": 1643519833,
+          "attributes": {
+            "quote_id": "Q_RFQ_009",
+            "amount": 26570
+          }
+        },
+        {
+          "case_id": "RFQ_009",
+          "activity": "quotation_sent",
+          "timestamp": 1643589299,
+          "attributes": {
+            "quote_date": 1643589299,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_009",
+          "activity": "po_sent",
+          "timestamp": 1644950912,
+          "attributes": {
+            "po_id": "PO_RFQ_009",
+            "quote_ref": "Q_RFQ_009",
+            "days_after_quote": 15
+          }
+        },
+        {
+          "case_id": "RFQ_009",
+          "activity": "po_accepted",
+          "timestamp": 1645025316,
+          "attributes": {
+            "acceptance_date": 1645025316,
+            "reason": "PO accepted without proper offer preservation"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_010",
+      "scenario_type": "missing_offer_preservation",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_010",
+          "activity": "rfq_sent",
+          "timestamp": 1641655405,
+          "attributes": {
+            "company_id": "COMP_A",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_010",
+          "activity": "quotation_prepared",
+          "timestamp": 1641808894,
+          "attributes": {
+            "quote_id": "Q_RFQ_010",
+            "amount": 69346
+          }
+        },
+        {
+          "case_id": "RFQ_010",
+          "activity": "quotation_sent",
+          "timestamp": 1641816323,
+          "attributes": {
+            "quote_date": 1641816323,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_010",
+          "activity": "po_sent",
+          "timestamp": 1641937342,
+          "attributes": {
+            "po_id": "PO_RFQ_010",
+            "quote_ref": "Q_RFQ_010",
+            "days_after_quote": 1
+          }
+        },
+        {
+          "case_id": "RFQ_010",
+          "activity": "po_accepted",
+          "timestamp": 1641982546,
+          "attributes": {
+            "acceptance_date": 1641982546,
+            "reason": "PO accepted without proper offer preservation"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_011",
+      "scenario_type": "missing_offer_preservation",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_011",
+          "activity": "rfq_sent",
+          "timestamp": 1641703369,
+          "attributes": {
+            "company_id": "COMP_B",
+            "supplier_id": "SUPP_Z"
+          }
+        },
+        {
+          "case_id": "RFQ_011",
+          "activity": "quotation_prepared",
+          "timestamp": 1641957336,
+          "attributes": {
+            "quote_id": "Q_RFQ_011",
+            "amount": 38052
+          }
+        },
+        {
+          "case_id": "RFQ_011",
+          "activity": "quotation_sent",
+          "timestamp": 1642032458,
+          "attributes": {
+            "quote_date": 1642032458,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_011",
+          "activity": "po_sent",
+          "timestamp": 1642632706,
+          "attributes": {
+            "po_id": "PO_RFQ_011",
+            "quote_ref": "Q_RFQ_011",
+            "days_after_quote": 6
+          }
+        },
+        {
+          "case_id": "RFQ_011",
+          "activity": "po_accepted",
+          "timestamp": 1642685500,
+          "attributes": {
+            "acceptance_date": 1642685500,
+            "reason": "PO accepted without proper offer preservation"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_012",
+      "scenario_type": "late_po_accepted",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_012",
+          "activity": "rfq_sent",
+          "timestamp": 1643179560,
+          "attributes": {
+            "company_id": "COMP_A",
+            "supplier_id": "SUPP_Z"
+          }
+        },
+        {
+          "case_id": "RFQ_012",
+          "activity": "quotation_prepared",
+          "timestamp": 1643388142,
+          "attributes": {
+            "quote_id": "Q_RFQ_012",
+            "amount": 95204
+          }
+        },
+        {
+          "case_id": "RFQ_012",
+          "activity": "quotation_sent",
+          "timestamp": 1643409715,
+          "attributes": {
+            "quote_date": 1643409715,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_012",
+          "activity": "offer_preserved",
+          "timestamp": 1643502155,
+          "attributes": {
+            "expiry_date": 1644014515,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_012",
+          "activity": "po_sent",
+          "timestamp": 1645499021,
+          "attributes": {
+            "po_id": "PO_RFQ_012",
+            "quote_ref": "Q_RFQ_012",
+            "days_after_quote": 24
+          }
+        },
+        {
+          "case_id": "RFQ_012",
+          "activity": "po_accepted",
+          "timestamp": 1645523053,
+          "attributes": {
+            "acceptance_date": 1645523053,
+            "reason": "Incorrectly accepted late PO"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_013",
+      "scenario_type": "late_po_accepted",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_013",
+          "activity": "rfq_sent",
+          "timestamp": 1641722976,
+          "attributes": {
+            "company_id": "COMP_A",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_013",
+          "activity": "quotation_prepared",
+          "timestamp": 1641912054,
+          "attributes": {
+            "quote_id": "Q_RFQ_013",
+            "amount": 39220
+          }
+        },
+        {
+          "case_id": "RFQ_013",
+          "activity": "quotation_sent",
+          "timestamp": 1641921696,
+          "attributes": {
+            "quote_date": 1641921696,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_013",
+          "activity": "offer_preserved",
+          "timestamp": 1642127015,
+          "attributes": {
+            "expiry_date": 1642526496,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_013",
+          "activity": "po_sent",
+          "timestamp": 1644186486,
+          "attributes": {
+            "po_id": "PO_RFQ_013",
+            "quote_ref": "Q_RFQ_013",
+            "days_after_quote": 26
+          }
+        },
+        {
+          "case_id": "RFQ_013",
+          "activity": "po_accepted",
+          "timestamp": 1644223800,
+          "attributes": {
+            "acceptance_date": 1644223800,
+            "reason": "Incorrectly accepted late PO"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_014",
+      "scenario_type": "late_po_accepted",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_014",
+          "activity": "rfq_sent",
+          "timestamp": 1641415841,
+          "attributes": {
+            "company_id": "COMP_B",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_014",
+          "activity": "quotation_prepared",
+          "timestamp": 1641606564,
+          "attributes": {
+            "quote_id": "Q_RFQ_014",
+            "amount": 12871
+          }
+        },
+        {
+          "case_id": "RFQ_014",
+          "activity": "quotation_sent",
+          "timestamp": 1641655370,
+          "attributes": {
+            "quote_date": 1641655370,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_014",
+          "activity": "offer_preserved",
+          "timestamp": 1641922759,
+          "attributes": {
+            "expiry_date": 1642260170,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_014",
+          "activity": "po_sent",
+          "timestamp": 1643701966,
+          "attributes": {
+            "po_id": "PO_RFQ_014",
+            "quote_ref": "Q_RFQ_014",
+            "days_after_quote": 23
+          }
+        },
+        {
+          "case_id": "RFQ_014",
+          "activity": "po_accepted",
+          "timestamp": 1643743277,
+          "attributes": {
+            "acceptance_date": 1643743277,
+            "reason": "Incorrectly accepted late PO"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_015",
+      "scenario_type": "no_response_to_po",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_015",
+          "activity": "rfq_sent",
+          "timestamp": 1641516432,
+          "attributes": {
+            "company_id": "COMP_A",
+            "supplier_id": "SUPP_Y"
+          }
+        },
+        {
+          "case_id": "RFQ_015",
+          "activity": "quotation_prepared",
+          "timestamp": 1641739238,
+          "attributes": {
+            "quote_id": "Q_RFQ_015",
+            "amount": 40983
+          }
+        },
+        {
+          "case_id": "RFQ_015",
+          "activity": "quotation_sent",
+          "timestamp": 1641760283,
+          "attributes": {
+            "quote_date": 1641760283,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_015",
+          "activity": "offer_preserved",
+          "timestamp": 1642181367,
+          "attributes": {
+            "expiry_date": 1642365083,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_015",
+          "activity": "po_sent",
+          "timestamp": 1643477611,
+          "attributes": {
+            "po_id": "PO_RFQ_015",
+            "quote_ref": "Q_RFQ_015",
+            "days_after_quote": 19
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "RFQ_016",
+      "scenario_type": "no_response_to_po",
+      "compliance_status": "violating",
+      "events": [
+        {
+          "case_id": "RFQ_016",
+          "activity": "rfq_sent",
+          "timestamp": 1643290213,
+          "attributes": {
+            "company_id": "COMP_C",
+            "supplier_id": "SUPP_Z"
+          }
+        },
+        {
+          "case_id": "RFQ_016",
+          "activity": "quotation_prepared",
+          "timestamp": 1643401723,
+          "attributes": {
+            "quote_id": "Q_RFQ_016",
+            "amount": 49661
+          }
+        },
+        {
+          "case_id": "RFQ_016",
+          "activity": "quotation_sent",
+          "timestamp": 1643473466,
+          "attributes": {
+            "quote_date": 1643473466,
+            "validity_period": 604800
+          }
+        },
+        {
+          "case_id": "RFQ_016",
+          "activity": "offer_preserved",
+          "timestamp": 1643942989,
+          "attributes": {
+            "expiry_date": 1644078266,
+            "preservation_confirmed": true
+          }
+        },
+        {
+          "case_id": "RFQ_016",
+          "activity": "po_sent",
+          "timestamp": 1644535773,
+          "attributes": {
+            "po_id": "PO_RFQ_016",
+            "quote_ref": "Q_RFQ_016",
+            "days_after_quote": 12
+          }
+        }
+      ]
+    }
+  ]
+}

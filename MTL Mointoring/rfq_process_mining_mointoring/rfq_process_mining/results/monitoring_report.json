@@ -1,0 +1,48 @@
+{
+  "monitoring_summary": {
+    "total_traces": 1000
+  },
+  "property_violations": {
+    "response": {
+      "total_violations": 416
+    },
+    "alternate_response": {
+      "total_violations": 416
+    },
+    "strict_chain_response": {
+      "total_violations": 389
+    },
+    "absence_a_finalized": {
+      "total_violations": 390
+    }
+  },
+  "case_violations": {
+    "200236": [
+      {
+        "property": "response",
+        "timestamp": 1326982708,
+        "details": "Final Violation: Trace ended without completion"
+      },
+      {
+        "property": "alternate_response",
+        "timestamp": 1326377908,
+        "details": "Final Violation: No valid response after a_submitted"
+      }
+    ],
+    "182044": [
+      {
+        "property": "strict_chain_response",
+        "timestamp": 1320346578,
+        "details": "Violation: w_completeren_aanvraag at position 4 not immediately before A_ACCEPTED. Intermediate events: ['a_accepted']"
+      },
+      {
+        "property": "absence_a_finalized",
+        "timestamp": 1320346688,
+        "details": "Violation: A_FINALIZED occurred when forbidden"
+      }
+    ]
+  },
+  "compliant_cases": [
+    "186607"
+  ]
+}

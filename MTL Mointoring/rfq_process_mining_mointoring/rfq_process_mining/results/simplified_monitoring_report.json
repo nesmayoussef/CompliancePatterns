@@ -1,0 +1,528 @@
+{
+  "monitoring_summary": {
+    "total_traces": 14,
+    "compliant_traces": 6,
+    "violating_traces": 8,
+    "compliance_rate": 0.42857142857142855,
+    "prediction_accuracy": 1.0
+  },
+  "property_violations": {
+    "offer_preservation": 3,
+    "timely_po_response": 2,
+    "late_po_denial": 3,
+    "late_po_incorrectly_accepted": 3,
+    "mutual_exclusion": 0
+  },
+  "case_summaries": [
+    {
+      "case_id": "RFQ_001",
+      "scenario_type": "perfect_compliance",
+      "expected_compliance": "compliant",
+      "actual_compliance": "compliant",
+      "compliance_match": true,
+      "violations": [],
+      "passes": [
+        "offer_preservation",
+        "timely_po_response",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_002",
+      "scenario_type": "perfect_compliance",
+      "expected_compliance": "compliant",
+      "actual_compliance": "compliant",
+      "compliance_match": true,
+      "violations": [],
+      "passes": [
+        "offer_preservation",
+        "timely_po_response",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_003",
+      "scenario_type": "perfect_compliance",
+      "expected_compliance": "compliant",
+      "actual_compliance": "compliant",
+      "compliance_match": true,
+      "violations": [],
+      "passes": [
+        "offer_preservation",
+        "timely_po_response",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_004",
+      "scenario_type": "late_po_denied",
+      "expected_compliance": "compliant",
+      "actual_compliance": "compliant",
+      "compliance_match": true,
+      "violations": [],
+      "passes": [
+        "offer_preservation",
+        "late_po_denial",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_005",
+      "scenario_type": "late_po_denied",
+      "expected_compliance": "compliant",
+      "actual_compliance": "compliant",
+      "compliance_match": true,
+      "violations": [],
+      "passes": [
+        "offer_preservation",
+        "late_po_denial",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_006",
+      "scenario_type": "late_po_denied",
+      "expected_compliance": "compliant",
+      "actual_compliance": "compliant",
+      "compliance_match": true,
+      "violations": [],
+      "passes": [
+        "offer_preservation",
+        "late_po_denial",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_009",
+      "scenario_type": "missing_offer_preservation",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "offer_preservation"
+      ],
+      "passes": [
+        "timely_po_response",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_010",
+      "scenario_type": "missing_offer_preservation",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "offer_preservation"
+      ],
+      "passes": [
+        "timely_po_response",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_011",
+      "scenario_type": "missing_offer_preservation",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "offer_preservation"
+      ],
+      "passes": [
+        "timely_po_response",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_012",
+      "scenario_type": "late_po_accepted",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "late_po_denial",
+        "late_po_incorrectly_accepted"
+      ],
+      "passes": [
+        "offer_preservation",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_013",
+      "scenario_type": "late_po_accepted",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "late_po_denial",
+        "late_po_incorrectly_accepted"
+      ],
+      "passes": [
+        "offer_preservation",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_014",
+      "scenario_type": "late_po_accepted",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "late_po_denial",
+        "late_po_incorrectly_accepted"
+      ],
+      "passes": [
+        "offer_preservation",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_015",
+      "scenario_type": "no_response_to_po",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "timely_po_response"
+      ],
+      "passes": [
+        "offer_preservation",
+        "mutual_exclusion"
+      ]
+    },
+    {
+      "case_id": "RFQ_016",
+      "scenario_type": "no_response_to_po",
+      "expected_compliance": "violating",
+      "actual_compliance": "violating",
+      "compliance_match": true,
+      "violations": [
+        "timely_po_response"
+      ],
+      "passes": [
+        "offer_preservation",
+        "mutual_exclusion"
+      ]
+    }
+  ],
+  "detailed_results": [
+    {
+      "case_id": "RFQ_001",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1643098323,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_001",
+      "property": "timely_po_response",
+      "verdict": true,
+      "timestamp": 1643559585,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_001",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1643523591,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_002",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1642108699,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_002",
+      "property": "timely_po_response",
+      "verdict": true,
+      "timestamp": 1643689174,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_002",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1643684500,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_003",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1643012808,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_003",
+      "property": "timely_po_response",
+      "verdict": true,
+      "timestamp": 1644525854,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_003",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1644501420,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_004",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1642472524,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_004",
+      "property": "late_po_denial",
+      "verdict": true,
+      "timestamp": 1644163573,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_004",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1644149287,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_005",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1641996477,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_005",
+      "property": "late_po_denial",
+      "verdict": true,
+      "timestamp": 1643873317,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_005",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1643864368,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_006",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1642089750,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_006",
+      "property": "late_po_denial",
+      "verdict": true,
+      "timestamp": 1644006138,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_006",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1643977807,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_009",
+      "property": "offer_preservation",
+      "verdict": false,
+      "timestamp": 1643589299,
+      "violation_details": "Quotation sent but offer never preserved"
+    },
+    {
+      "case_id": "RFQ_009",
+      "property": "timely_po_response",
+      "verdict": true,
+      "timestamp": 1645025316,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_009",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1644950912,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_010",
+      "property": "offer_preservation",
+      "verdict": false,
+      "timestamp": 1641816323,
+      "violation_details": "Quotation sent but offer never preserved"
+    },
+    {
+      "case_id": "RFQ_010",
+      "property": "timely_po_response",
+      "verdict": true,
+      "timestamp": 1641982546,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_010",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1641937342,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_011",
+      "property": "offer_preservation",
+      "verdict": false,
+      "timestamp": 1642032458,
+      "violation_details": "Quotation sent but offer never preserved"
+    },
+    {
+      "case_id": "RFQ_011",
+      "property": "timely_po_response",
+      "verdict": true,
+      "timestamp": 1642685500,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_011",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1642632706,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_012",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1643502155,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_012",
+      "property": "late_po_denial",
+      "verdict": false,
+      "timestamp": 1645499021,
+      "violation_details": "PO sent after deadline (24.2 days) but not denied"
+    },
+    {
+      "case_id": "RFQ_012",
+      "property": "late_po_incorrectly_accepted",
+      "verdict": false,
+      "timestamp": 1645523053,
+      "violation_details": "Late PO (24.2 days) incorrectly accepted instead of denied"
+    },
+    {
+      "case_id": "RFQ_012",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1645499021,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_013",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1642127015,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_013",
+      "property": "late_po_denial",
+      "verdict": false,
+      "timestamp": 1644186486,
+      "violation_details": "PO sent after deadline (26.2 days) but not denied"
+    },
+    {
+      "case_id": "RFQ_013",
+      "property": "late_po_incorrectly_accepted",
+      "verdict": false,
+      "timestamp": 1644223800,
+      "violation_details": "Late PO (26.2 days) incorrectly accepted instead of denied"
+    },
+    {
+      "case_id": "RFQ_013",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1644186486,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_014",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1641922759,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_014",
+      "property": "late_po_denial",
+      "verdict": false,
+      "timestamp": 1643701966,
+      "violation_details": "PO sent after deadline (23.7 days) but not denied"
+    },
+    {
+      "case_id": "RFQ_014",
+      "property": "late_po_incorrectly_accepted",
+      "verdict": false,
+      "timestamp": 1643743277,
+      "violation_details": "Late PO (23.7 days) incorrectly accepted instead of denied"
+    },
+    {
+      "case_id": "RFQ_014",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1643701966,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_015",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1642181367,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_015",
+      "property": "timely_po_response",
+      "verdict": false,
+      "timestamp": 1643477611,
+      "violation_details": "PO sent within deadline (19.9 days) but not accepted"
+    },
+    {
+      "case_id": "RFQ_015",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1643477611,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_016",
+      "property": "offer_preservation",
+      "verdict": true,
+      "timestamp": 1643942989,
+      "violation_details": null
+    },
+    {
+      "case_id": "RFQ_016",
+      "property": "timely_po_response",
+      "verdict": false,
+      "timestamp": 1644535773,
+      "violation_details": "PO sent within deadline (12.3 days) but not accepted"
+    },
+    {
+      "case_id": "RFQ_016",
+      "property": "mutual_exclusion",
+      "verdict": true,
+      "timestamp": 1644535773,
+      "violation_details": null
+    }
+  ]
+}

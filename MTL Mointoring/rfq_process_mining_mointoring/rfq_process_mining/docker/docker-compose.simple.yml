@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  rfq-process-mining:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: rfq-mtl-m-monitoring
+    image: rfq-process-mining:latest
+    ports:
+      - "8888:8888"  # Jupyter Lab port
+    volumes:
+      # Mount project directories for live editing
+      - ../traces:/app/rfq_process_mining/traces
+      - ../monitoring:/app/rfq_process_mining/monitoring
+      - ../results:/app/rfq_process_mining/results
+      - ../specifications:/app/rfq_process_mining/specifications
+      # Persistent data volume
+      - rfq_data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      - rfq-network
+
+volumes:
+  rfq_data:
+    driver: local
+
+networks:
+  rfq-network:
+    driver: bridge
+
