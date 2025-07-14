@@ -78,14 +78,7 @@ class RFQMTLMonitor:
             )
         ).always()
 
-        # self.strict_chain_response = (
-        #     self.a_accepted.implies(mtl.Next(self.w_complete))
-        # ).always()
-
-            # Working formulation using logical operators
-
-        # self.strict_chain_property = mtl.G(self.a_accepted >> self.w_complete)
-        # Runtime tracking configuration
+         # Runtime tracking configuration
         self.use_mtl_strict_chain = False  # Set True to use MTL evaluation
 
         # Absence pattern: A_FINALIZED should never occur
@@ -119,29 +112,6 @@ class RFQMTLMonitor:
         case_id = event['case_id']
         activity = event['activity']
         timestamp = event['timestamp']
-        # # Initialize case state if new
-        # if case_id not in self.case_states:
-        #     self.case_states[case_id] = {
-        #         'events': [],
-        #         'quotation_time': None,
-        #         'po_time': None,
-        #         'signals': {
-        #             'a_accepted': [],
-        #             'w_completeren_aanvraag': [],
-        #
-        #         }
-        #     }
-        #
-        # case_state = self.case_states[case_id]
-        # case_state['events'].append(event)
-        #
-        # # Update signals based on event
-        # self._update_signals(case_id, event)
-        #
-        # # Check properties and return results
-        # return self._check_properties(case_id, timestamp)
-
-        # Initialize case state if new
         if case_id not in self.case_states:
             self.case_states[case_id] = {
                 'events': [],
@@ -170,158 +140,12 @@ class RFQMTLMonitor:
         # Update last event
         case_state['last_event'] = activity
 
-        # # Update signal with strictly increasing timestamps
-        # adjusted_ts = timestamp + (len(case_state['events']) * 0.001)  # Small increment
-        # case_state['signal']['a_accepted'].append((adjusted_ts, activity == 'a_accepted'))
-        # case_state['signal']['w_completeren_aanvraag'].append((adjusted_ts, activity == 'w_completeren_aanvraag'))
-        #
-
 
         results = strict_chain_results + chain_results + response_results + alternate_results + absence_results + existence_results
         self.monitoring_results.extend(results)
         return results
 
-    # def process_event(self, event: Dict[str, Any]) -> List[MonitoringResult]:
-    #     """Process a single event and update monitoring state"""
-    #     case_id = event['case_id']
-    #     activity = event['activity']
-    #     timestamp = event['timestamp']
-    #
-    #     # Initialize case state if new
-    #     if case_id not in self.case_states:
-    #         self.case_states[case_id] = {
-    #             'events': [],
-    #             'signals': {
-    #                 'a_accepted': [],
-    #                 'w_completeren_aanvraag': [],
-    #             },
-    #             'a_submitted_time': None,
-    #             'w_complete_time': None,
-    #             'violation_reported': False,
-    #             'completed': False,
-    #             'last_event': None,
-    #             'chain_precede_violations': set(),
-    #             'pending_alternate_response': False,
-    #             'seen_intermediate_submit': False,
-    #         }
-    #
-    #     case_state = self.case_states[case_id]
-    #     case_state['events'].append(event)
-    #
-    #     # Update signals with strictly increasing timestamps
-    #     adjusted_ts = timestamp + (len(case_state['events']) * 0.001)  # Small increment
-    #     if activity == 'a_accepted':
-    #         case_state['signals']['a_accepted'].append((adjusted_ts, True))
-    #     elif activity == 'w_completeren_aanvraag':
-    #         case_state['signals']['w_completeren_aanvraag'].append((adjusted_ts, True))
-    #
-    #     # Check all patterns
-    #     chain_results = self._check_chain_precede(case_id, activity, timestamp, case_state)
-    #     response_results = self._check_response_pattern(case_id, activity, timestamp, case_state)
-    #     alternate_results = self._check_alternate_response(case_id, activity, timestamp, case_state)
-    #     strict_results = self._check_strict_chain_mtl(case_id, case_state)
-    #     absence_results = self._check_absence_patterns(case_id, activity, timestamp, case_state)
-    #     existence_results = self._check_existence_patterns(case_id, activity, timestamp, case_state)
-    #
-    #     # Update last event
-    #     case_state['last_event'] = activity
-    #
-    #     results = strict_results + chain_results + response_results + alternate_results + absence_results + existence_results
-    #     self.monitoring_results.extend(results)
-    #     return results
-
-    # def _check_strict_chain_mtl(self, case_id: str, case_state: Dict[str, Any]) -> List[MonitoringResult]:
-    #     """Check strict chain response using MTL evaluation"""
-    #     results = []
-    #     # Build proper signal with strictly increasing timestamps
-    #     signal = {
-    #         'a_accepted': [],
-    #         'w_completeren_aanvraag': []
-    #     }
-    #
-    #     # Create signal with small increments to ensure unique timestamps
-    #     for i, event in enumerate(case_state['events']):
-    #         adjusted_ts = event['timestamp'] + (i * 0.001)
-    #         signal['a_accepted'].append((adjusted_ts, event['activity'] == 'a_accepted'))
-    #         signal['w_completeren_aanvraag'].append((adjusted_ts, event['activity'] == 'w_completeren_aanvraag'))
-    #
-    #     try:
-    #         # Evaluate the property
-    #         valuation = self.strict_chain_response.evaluate(signal)
-    #
-    #         # Find all points where the property is False
-    #         for i, (ts, val) in enumerate(valuation):
-    #             if not val:
-    #                 # Find the corresponding a_accepted event
-    #                 for j, event in enumerate(case_state['events']):
-    #                     if (event['activity'] == 'a_accepted' and
-    #                             abs(event['timestamp'] - ts) < 1.0):  # Allow small timestamp difference
-    #
-    #                         next_event = case_state['events'][j + 1] if j + 1 < len(case_state['events']) else None
-    #                         violation_details = (
-    #                             f"Violation at {ts}: a_accepted not immediately followed by "
-    #                             f"w_completeren_aanvraag. Next event was "
-    #                             f"{next_event['activity'] if next_event else 'end of trace'}"
-    #                         )
-    #
-    #                         results.append(MonitoringResult(
-    #                             case_id=case_id,
-    #                             property_name="strict_chain_response",
-    #                             verdict=False,
-    #                             timestamp=event['timestamp'],
-    #                             violation_details=violation_details
-    #                         ))
-    #                         break
-    #     except Exception as e:
-    #         print(f"Error evaluating strict chain property: {e}")
-    #
-    #     return results
-    # def _check_properties(self, case_id: str, timestamp: int) -> List[MonitoringResult]:
-    #     """Check all MTL properties including the new strict chain response"""
-    #     results = []
-    #     case_state = self.case_states[case_id]
-    #     signals = case_state['signals']
-    #
-    #     # # Only check properties if we have enough data
-    #     # if len(signals['quotation_sent']) == 0:
-    #     #     return results
-    #
-    #     try:
-    #         if any(sent for _, sent in signals['a_accepted']):
-    #             # Evaluate the strict chain property
-    #             result = self.strict_chain_response(signals, quantitative=False)
-    #             results.append(MonitoringResult(
-    #                 case_id=case_id,
-    #                 property_name="strict chain response",
-    #                 verdict=result,
-    #                 timestamp=timestamp,
-    #                 violation_details=None if result else "accepted sent"
-    #             ))
-    #
-    #                 # New strict chain response check
-    #     except Exception as e:
-    #         print(f"Error checking properties for case {case_id}: {e}")
-    #
-    #     # Original property checks
-    #
-    #
-    #     return results
-    # def _check_absence_patterns(self, case_id: str, activity: str,
-    #                             timestamp: int, case_state: Dict[str, Any]) -> List[MonitoringResult]:
-    #     results = []
-    #
-    #     # Check for A_FINALIZED occurrence
-    #     if activity.upper() == 'A_FINALIZED':
-    #         results.append(MonitoringResult(
-    #             case_id=case_id,
-    #             property_name="absence_a_finalized",
-    #             verdict=False,
-    #             timestamp=timestamp,
-    #             violation_details="Violation: A_FINALIZED occurred when it should be absent"
-    #         ))
-    #
-    #     return results
-
+  
     def _check_absence_patterns(self, case_id, activity, timestamp, case_state):
         results = []
 
@@ -379,31 +203,16 @@ class RFQMTLMonitor:
                                   timestamp: int, case_state: Dict[str, Any]) -> List[MonitoringResult]:
         results = []
 
-        # Check for O_DECLINED occurrence
-        # Check for A_DECLINED occurrence
         # Initialize 'a_declined_found' if not already set
         if 'a_declined_found' not in case_state:
             case_state['a_declined_found'] = False
-            # results.append(MonitoringResult(
-            #     case_id=case_id,
-            #     property_name="existence_a_declined",
-            #     verdict=False,  # Success (found)
-            #     timestamp=timestamp,
-            #     violation_details=None
-            # ))
+          
 
         # Check if current activity is 'A_DECLINED'
         if activity.upper() == 'A_DECLINED':
             case_state['a_declined_found'] = True
 
-            # Success: 'A_DECLINED' was found (verdict=True)
-            # results.append(MonitoringResult(
-            #     case_id=case_id,
-            #     property_name="existence_a_declined",
-            #     verdict=True,  # Success (found)
-            #     timestamp=timestamp,
-            #     violation_details=None
-            # ))
+           
         return results
     def _check_chain_precede(self, case_id: str, activity: str, timestamp: int,
                              case_state: Dict[str, Any]) -> List[MonitoringResult]:
@@ -650,94 +459,7 @@ class RFQMTLMonitor:
             case_state['pending_alternate_response'] = False  # Reset after timeout
 
         return results
-    # def _check_strict_chain_response(self, case_id: str, activity: str,
-    #                                  timestamp: int, case_state: Dict[str, Any]) -> List[MonitoringResult]:
-    #     results = []
-    #
-    #     if activity == 'a_accepted':
-    #         # Initialize the expectation for w_completeren_aanvraag
-    #         case_state['expecting_w_complete'] = {
-    #             'required_by': timestamp + 5000,  # 5 second deadline
-    #             'position': len(case_state['events'])  # Current position in event sequence
-    #         }
-    #
-    #     elif activity == 'w_completeren_aanvraag':
-    #         if case_state.get('expecting_w_complete'):
-    #             # Check if this is the immediate next event
-    #             expected_position = case_state['expecting_w_complete']['position']
-    #             if len(case_state['events']) != expected_position + 1:
-    #                 results.append(MonitoringResult(
-    #                     case_id=case_id,
-    #                     property_name="strict_chain_response",
-    #                     verdict=False,
-    #                     timestamp=timestamp,
-    #                     violation_details="Violation: Non-immediate response (intermediate events detected)"
-    #                 ))
-    #             # Clear the expectation regardless of whether it was met
-    #             case_state['expecting_w_complete'] = None
-    #
-    #     # Check for timeout violations
-    #     if case_state.get('expecting_w_complete'):
-    #         if timestamp >= case_state['expecting_w_complete']['required_by']:
-    #             results.append(MonitoringResult(
-    #                 case_id=case_id,
-    #                 property_name="strict_chain_response",
-    #                 verdict=False,
-    #                 timestamp=case_state['expecting_w_complete']['required_by'],
-    #                 violation_details="Violation: w_completeren_aanvraag not received within 5 seconds"
-    #             ))
-    #             case_state['expecting_w_complete'] = None
-    #
-    #     return results
-    # # def process_trace(self, trace: Dict[str, Any]) -> List[MonitoringResult]:
-    #     """Process an entire trace"""
-    #     case_id = trace['case_id']
-    #     events = trace['events']
-    #     all_results = []
-    #
-    #     for event in sorted(events, key=lambda e: e['timestamp']):
-    #         results = self.process_event(event)
-    #         all_results.extend(results)
-    #
-    #     # Final checks
-    #     case_state = self.case_states.get(case_id, {})
-    #
-    #     # Response pattern final check
-    #     if (case_state.get('a_submitted_time') is not None and
-    #             not case_state.get('completed') and
-    #             not case_state.get('violation_reported')):
-    #         violation = MonitoringResult(
-    #             case_id=case_id,
-    #             property_name="response",
-    #             verdict=False,
-    #             timestamp=case_state['a_submitted_time'] + self.response_time_limit,
-    #             violation_details="Final Violation: Trace ended without completion"
-    #         )
-    #         all_results.append(violation)
-    #         print(f"  Response pattern: ✗ VIOLATION (never completed)")
-    #
-    #     # Alternate Response final check
-    #     # Final check - only flag if still pending AND no valid response was found
-    #     if (case_state.get('pending_alternate_response', False) and
-    #             not any(r.property_name == "alternate_response" and r.verdict
-    #                     for r in all_results)):
-    #         violation_msg = "Final Violation: No valid response after a_submitted"
-    #         all_results.append(MonitoringResult(
-    #             case_id=case_id,
-    #             property_name="alternate_response",
-    #             verdict=False,
-    #             timestamp=case_state['last_submitted_time'],
-    #             violation_details=violation_msg
-    #         ))
-    #
-    #     # Chain Precede summary
-    #     chain_violations = [r for r in all_results if r.property_name == "chain_precede"]
-    #     if chain_violations:
-    #         print(f"  Chain Precede: ✗ VIOLATION ({len(chain_violations)} violations)")
-    #     else:
-    #         print("  Chain Precede: ✓ COMPLIANT")
-    #
-    #     return all_results
+   
 
     def _check_strict_chain_response(self, case_id: str, activity: str,
                                      timestamp: int, case_state: Dict[str, Any]) -> List[MonitoringResult]:
@@ -775,41 +497,7 @@ class RFQMTLMonitor:
         return results
     #
 
-    # def _check_strict_chain_response(self, case_id: str, activity: str,
-    #                                  timestamp: int, case_state: Dict[str, Any]) -> List[MonitoringResult]:
-    #     """Check if every a_accepted is immediately followed by w_completeren_aanvraag"""
-    #     results = []
-    #     events = case_state['events']
-    #
-    #     # Check each a_accepted to see if next event is w_completeren_aanvraag
-    #     for i in range(len(events) - 1):  # -1 because we check i+1
-    #         if events[i]['activity'] == 'a_accepted':
-    #             next_activity = events[i + 1]['activity']
-    #             if next_activity != 'w_completeren_aanvraag':
-    #                 results.append(MonitoringResult(
-    #                     case_id=case_id,
-    #                     property_name="strict_chain_response",
-    #                     verdict=False,
-    #                     timestamp=events[i + 1]['timestamp'],
-    #                     violation_details=(
-    #                         f"Violation: a_accepted at {events[i]['timestamp']} "
-    #                         f"not immediately followed by w_completeren_aanvraag. "
-    #                         f"Next event was '{next_activity}'"
-    #                     )
-    #                 ))
-    #
-    #     # Special case: a_accepted as last event (can't have next)
-    #     if events and events[-1]['activity'] == 'a_accepted':
-    #         results.append(MonitoringResult(
-    #             case_id=case_id,
-    #             property_name="strict_chain_response",
-    #             verdict=False,
-    #             timestamp=events[-1]['timestamp'],
-    #             violation_details="Violation: a_accepted at end of trace with no following w_completeren_aanvraag"
-    #         ))
-    #
-    #     return results
-
+   
     def process_trace(self, trace: Dict[str, Any]) -> List[MonitoringResult]:
         """Process an entire trace"""
         case_id = trace['case_id']
@@ -867,15 +555,7 @@ class RFQMTLMonitor:
         else:
             print("  Strict Chain Response: ✓ COMPLIANT")
 
-        # if not any(e['activity'].upper() == 'A_FINALIZED' for e in trace['events']):
-        #            results.append(MonitoringResult(
-        #                case_id=case_id,
-        #                property_name="absence_a_finalized",
-        #                verdict=True,
-        #                timestamp=trace['events'][-1]['timestamp'],
-        #                violation_details=None
-        #            ))
-
+       
         if case_state.get('a_finalized_occurred', False):
             print("MTL violation detected: A_FINALIZED occurred")
                    # SINGLE authoritative existence check
@@ -935,78 +615,6 @@ class RFQMonitoringEngine:
             self.processed_traces.append(trace)
 
         return self.monitoring_results
-
-    # def generate_monitoring_report(self) -> Dict[str, Any]:
-    #     """Generate report showing which cases violated each pattern"""
-    #     total_traces = len(self.processed_traces)
-    #
-    #     # Initialize data structures
-    #     property_violations = defaultdict(lambda: {'count': 0, 'cases': set()})
-    #     case_violations = defaultdict(list)
-    #     all_violating_cases = set()
-    #
-    #     # Process all monitoring results
-    #     for result in self.monitoring_results:
-    #         if not result.verdict:
-    #             # Track violations by property
-    #             property_violations[result.property_name]['count'] += 1
-    #             property_violations[result.property_name]['cases'].add(result.case_id)
-    #
-    #             # Track violations by case
-    #             case_violations[result.case_id].append({
-    #                 'property': result.property_name,
-    #                 'timestamp': result.timestamp,
-    #                 'details': result.violation_details
-    #             })
-    #             all_violating_cases.add(result.case_id)
-    #
-    #     # Calculate compliant cases
-    #     compliant_cases = total_traces - len(all_violating_cases)
-    #
-    #     # Build the report
-    #     report = {
-    #         "monitoring_summary": {
-    #             "total_traces": total_traces,
-    #             "compliant_traces": compliant_cases,
-    #             "violating_traces": len(all_violating_cases),
-    #             "compliance_rate": compliant_cases / total_traces if total_traces > 0 else 0,
-    #         },
-    #         "property_violations": {
-    #             prop: {
-    #                 'total_violations': data['count'],
-    #                 'violating_cases': list(data['cases'])
-    #             } for prop, data in property_violations.items()
-    #         },
-    #         "case_violations": {
-    #             case_id: violations
-    #             for case_id, violations in case_violations.items()
-    #         },
-    #         "compliant_cases": [
-    #             case_id for case_id in (case['case_id'] for case in self.processed_traces)
-    #             if case_id not in all_violating_cases
-    #         ]
-    #     }
-    #
-    #     # Print formatted output
-    #     print("\nFinal Compliance Report:")
-    #     print(f"Total traces: {total_traces}")
-    #     print(f"Compliant cases: {compliant_cases}")
-    #     print(f"Violating cases: {len(all_violating_cases)}")
-    #     print(f"Compliance rate: {report['monitoring_summary']['compliance_rate']:.2%}")
-    #
-    #     print("\n=== Property Violations ===")
-    #     for prop, data in report['property_violations'].items():
-    #         print(f"{prop}: {data['total_violations']} violations")
-    #         print(f"   Cases: {', '.join(data['violating_cases'])}")
-    #
-    #     print("\n=== Case Details ===")
-    #     for case_id, violations in report['case_violations'].items():
-    #         print(f"\nCase {case_id} violations:")
-    #         for violation in violations:
-    #             print(f" - {violation['property']} at {violation['timestamp']}: {violation['details']}")
-    #
-    #     print("\nMonitoring completed!")
-    #     return report
 
     def generate_monitoring_report(self) -> Dict[str, Any]:
         """Generate report showing which cases violated each pattern"""
